@@ -2,68 +2,132 @@
 // Projet Name 			: POBJ_DemoCPP_25_26
 // File Name 			: demoSLO.cpp
 // Creation Date 		: 19.09.2024
-// Modification Date	: 18.11.2025
+// Modification Date	: 18.11.2026
 //
 // Author 				: Philou (Ph. Bovey)
 //
-// Version				: 1.4
+// Version				: 1.5
 //
 // Description          : demo for SLO2's team  
-//						 
+//						  -> type (primitive) 
+//						  -> static or dynamic memories
+//						  -> objects
 // Remarks				: 
 //----------------------------------------------------------------------------------*/
 
 //-- standart libraries --// 
-			// equivalent at the <stdio.h> in C
-			// for the objects linked to the string 
-			// to use a C library -> here the normalised type 
+#include <iostream>		// equivalent at the <stdio.h> in C
+#include <string>		// for the objects linked to the string 
+#include <cstdint>		// to use a C library -> here the normalised type 
+#include <cstdbool>		// not required to use the boolean type 
+
 
 //-- personnal libraries -> class --//
-
+#include "mesFcts.h"
 
 //-- main programme -> entry point of the programm --//
-void main()
+int main()
 {
 	//--- variable's declaration ---//
-	//-- static memory -> "ROM" 
-	//-- primitive type  --// 
+	//--> static memory -> "ROM" 
+	//--> primitive type  --// 
 	//-- integer --//
-						//-> 1 octet			//-> true ou false 
-						//-> 1 octet
-						//-> 2 octet
-						//-> 4 octet 
-						//-> 4 octet 
-						//-> 8 octet
+	bool		valCheck;						//-> 1 byte			//-> true ou false 
+	char		valInteration;					//-> 1 byte
+	short		valDiviseur, valDividende;		//-> 2 bytes
+	int			valRetour; 						//-> 4 bytes 
+	long		valL; 							//-> 4 bytes 
+	long long	valLong; 						//-> 8 bytes
 	
 	//-- example with normalized type --// 
-
-	//
+	int8_t		val_8bits;		//-> 1 byte
+	int16_t		val_16bits; 	//-> 2 byte
+	int32_t		val_32bits; 	//-> 4 byte 
+	int64_t		val_64bits; 	//-> 8 byte
 
 	//-- real --//
-						//-> 4 octet 
-						//-> 8 octet 
-
-	bool A = true;		//-> not linked to a numeric value
-
-
-
+	float valF;		//-> 4 octet 
+	double valD;	//-> 8 octet 
 
 	//-- declaration of table (static memory) --// 
- 
+	char chaineCararter[NB_MAX_ALPHABET]; 
 
+	//-- Fill an alphabetical letter table --// 
+	for (valInteration = 0; valInteration < NB_MAX_ALPHABET; valInteration++)
+	{
+		chaineCararter[valInteration] = 0x41 + valInteration; 
+	}
+ 
 	//-- pointer declaration --// 
-						//-> primitive type 
+	char* ptTb; 	//-> primitive type 
 
 	//-- using the dynamique memories with a primitive variable --//
+	ptTb = new char[40];
+	
+	//-- copy a static caracter table --// 
+	ptTb = chaineCararter; 
+
+	//-- check if the entire table has been copied --// 
+	std::cout << "test -> dernière de lettre de l'alphabet ? :" << ptTb[25] << std::endl;
+
+	//-- creating static object --// 
+	//--> objet class/type string 
+	//--> creating and instantating the object; 
+	//--> static object memory
+	// class abstraite -> std class enfant -> string objet -> msg datas -> "hello" 
+	std::string msg = "hello"; 
+
+	msg += " ";  // msg = msg + " "
+
+	//-- creating the dynamic object
+	std::string* msg2; 
+
+	//-- instantiating the dynamic objetc
+	msg2 = new std::string("SLO");
+
+	//-- other methode to copy a string 
+	msg2->insert(0, msg);
+
+	//msg.clear();
+
+	//-- check if 2 is present in string --//
+	if (msg2->find("2") < 0)
+	{
+		valCheck = true; 
+	}
+	else
+	{
+		valCheck = false; 
+		std::cout << *msg2 + "2";
+	}
+
+	//-- destruction of dynamic objetc --// 
+	delete(msg2); 
+
+	//-- end of first demo --// 
+	std::cout << std::endl; 
+
+
+
+
+	//-- function calling --// 
+	/*Diviser(10, 5, valF);
+	Diviser(valI, 5.5);
+	Diviser()
+
+
+	//-- example to take a keyboard value --//
+	std::cin >> valI;		// integer value pour valeur entière 
+	std::cin >> valF;		// real value   
+	std::cin >> chaine;		// string with an object 
+	std::cin >> valC; 		// character value
+	*/
+
 	
 
-	//-- 
 
 
-	ptdemo = new std::string; 
-
-	std::string* ptdemo;			//-> object type 
-
+	/*
 
 	//-- value assignment on a variable -> static memory --// 
 	valI = 10;
@@ -105,9 +169,7 @@ void main()
 	
 
 
-	//-- object instantiation --// 
-	chaine = "HELLO"; 
-	chaine2 = "SLO"; 
+
 
 	//-- instancier un objet dynamique --// 
 	slo2Etudiant = new Personnage(); 
@@ -150,25 +212,21 @@ void main()
 	std::cout << chaine << " " << chaine2 << std::endl;
 	std::cout << "HELLO SLO !! \n" << std::endl;
 
-	//-- function calling --// 
-	Diviser(10, 5, valF); 
-	Diviser(valI, 5.5); 
 
-	//-- example to take a keyboard value --//
-	std::cin >> valI;		// integer value pour valeur entière 
-	std::cin >> valF;		// real value   
-	std::cin >> chaine;		// string with an object 
-	std::cin >> valC; 		// character value
 
-	//-- object copies --// 
-	chaine2 = chaine;			
+	
+
+		
 
 	// REMARQUE : static en C : garder la valeur d'une variable dans une fct 
 	//            static en C++ : pas besoin d'objet pour utiliser des méthodes ou attributs static 
 
 	//-- dynamique
+	*/
 
 	system("pause"); 
+
+	return 0; 
 }
 
 

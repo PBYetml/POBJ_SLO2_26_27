@@ -2,7 +2,7 @@
 // Projet Name 			: POBJ_DemoCPP_25_26
 // File Name 			: mesFcts.h
 // Creation Date 		: 18.11.2025
-// Modification Date	: xx.xx.20xx
+// Modification Date	: 18.11.2026
 //
 // Author 				: Philou (Ph. Bovey)
 //
@@ -15,6 +15,9 @@
 //----------------------------------------------------------------------------------*/
 #ifndef MES_FCTS_H
 #define MES_FCTS_H 
+
+#define NB_MAX_ALPHABET 26
+
 
 //-- prototype with "surcharge" concept --//
 //-- WARNING : if the oupput is only modified, this is not equivalent to on "surcharge"
